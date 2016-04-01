@@ -1,8 +1,13 @@
 #!/bin/bash
 
-#################################################################
-# Add a description here...
-#################################################################
+###################################################################################################
+# This script is used to setup the environment in your vitual machine
+# Install the base or last available ISO then run with curl :
+# sudo bash -c "$(curl -s https://raw.githubusercontent.com/HFScode/zeos-tools/master/install.sh)"
+# This will apply the last patches and fix that are not available yet in the last ISO
+# To buil a fresh ISO use :
+# # sudo bash -c "$(curl -s https://raw.githubusercontent.com/HFScode/zeos-tools/master/makeiso.sh)"
+####################################################################################################
 
 
 
@@ -17,8 +22,16 @@ if [ "$EUID" -ne 0 ]
       echo
   exit
 fi
+###We need to be sure that git is installed
 
-apt-get -y install git
+GITINSTALLED=$(dpkg-query -W --showformat='${Status}\n' git|grep "install ok installed")
+echo "Verifing if git is installed"
+if [ "" == "$GITINSTALLED" ]; then
+  echo "git not installed. Installing..."
+  sudo apt-get --force-yes --yes install git
+else
+  echo "git already installed."
+fi
 #########################################################################################
 # Arguments
 #########################################################################################
@@ -65,11 +78,11 @@ function installpkg {
     echo ">>>Installing package $1"
     #Put a lock on this script to avoid recursive calls
     echo $1 >> $DEFAULTPATH/$CURRINSTPKGLST
-    echo "Chekching if package alread installed"
+    echo "Chekching if package $1 is already installed"
     grep -Fxq "$1" $DEFAULTPATH/$INSTPKGLIST
     if [ $? != "0" ]; then
-        echo "Script is not installed"
-        echo "Running $PKG script"
+        echo "Script $1 is not installed"
+        echo "Running $1 script"
         echo
         echo $DEFAULTPATH/$DEFAULTSCRIPTDIR/$1
         if [ -f $DEFAULTPATH/$DEFAULTSCRIPTDIR/$1 ]; then
@@ -99,7 +112,7 @@ function installpkg {
 
 ### Install a package
 function checklock {
-    echo "Checkin for a file lock on $1 on main script"
+    echo "Checking for a file lock on $1 on main script"
     INFLOOPWARNING="false"
     grep -Fxq "$1" $DEFAULTPATH/$CURRINSTPKGLST
     if [ $? == "0" ]; then
@@ -127,7 +140,7 @@ function checklock {
         echo "Be warned that **ALL** recursive calls checks will be disabled and I won't"
         echo "be able anymore to prevent **ANY** recursive call"
         echo "**************************************************************************"
-        echo "Do you want me to remove the locks ? [N/y]"
+        echo "Do you want me to remove **ALL** locks ? [N/y]"
         
         read REMOVELOCK
         if [ $REMOVELOCK == "N" ] || [ $REMOVELOCK == "n" ]; then
@@ -156,7 +169,7 @@ case $i in
     GITPULL="${i#*=}"
     if [ $GITPULL != "true" -a $GITPULL != "false" ]; then
         GITPULL="true";
-        echo "WARNING : WRONG PAAMETER. >>> -p or --gitpull must be equal to true or false, forcing to true"
+        echo "WARNING : WRONG PARAMETER. >>> -p or --gitpull must be equal to true or false, forcing to true"
     fi
     shift
     ;;
@@ -185,7 +198,7 @@ echo "Git Pull required : $GITPULL"
 if [ $GITPULL == "true" ]; then
     echo "Updating git repo"
     if [ -d "$DEFAULTPATH/$DEFAULZEOSGITPATH" ]; then
-        echo "$DEFAULZEOSGITPATH exists checking if is git repo"
+        echo "$DEFAULZEOSGITPATH exists checking if it is git repo"
 	cd $DEFAULTPATH/$DEFAULZEOSGITPATH
         ISGITREPO=$(git rev-parse --is-inside-work-tree)
         if [ $ISGITREPO == "true" ]; then

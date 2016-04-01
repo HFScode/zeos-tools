@@ -52,7 +52,7 @@ function checklock {
         echo "Be warned that **ALL** recursive calls checks will be disabled and I won't"
         echo "be able anymore to prevent **ANY** recursive call"
         echo "**************************************************************************"
-        echo "Do you want me to remove the locks ? [N/y]"
+        echo "Do you want me to remove **ALL** locks ? [N/y]"
         
         read REMOVELOCK
         if [ $REMOVELOCK == "N" ] || [ $REMOVELOCK == "n" ]; then
