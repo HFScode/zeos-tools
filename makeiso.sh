@@ -1,4 +1,8 @@
 #!/bin/bash
+#######################################################
+# Add a description here...
+######################################################
+
 
 ###Check if script is run as root.
 if [ "$EUID" -ne 0 ]
@@ -92,7 +96,9 @@ mkdir $DEFAULTPATH/$DEFAULTISORIPPATH/remaster-root$DEFAULTPATH/
 cd $DEFAULTPATH/$DEFAULTISORIPPATH/remaster-root$DEFAULTPATH/
 git clone https://github.com/HFScode/zeos-tools 
 chmod +x -R $DEFAULTPATH/$DEFAULTISORIPPATH/remaster-root$DEFAULTPATH/ 
-
+echo "Your environment is ready"
+echo "You can manually copy some file to root system before I chroot it"
+echo "Press Enter you'r ready to continue...."
 read ANSWER
 ###chroot and run main install script
 uck-remaster-chroot-rootfs $DEFAULTPATH/$DEFAULTISORIPPATH $DEFAULTPATH/$DEFAULZEOSGITPATH/install.sh
