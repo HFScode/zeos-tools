@@ -14,7 +14,7 @@ sudo bash -c "$(curl -s https://raw.githubusercontent.com/HFScode/zeos-tools/mas
 
 This command allows two parameters :
 * ``--gitpull or -p`` that must be set to true or false (true by default) and that will make the script to clone or pull the git repo
-* ``--pkglist or -l`` that must be a path to a text file that contains the list of update scripts to be run. (see below)
+* ``--pkglist or -l`` that must be a path to a text file that contains the list of update scripts to be run.
 
 If you don’t specify any argument, the script will download and install all the patches, which is normally what you’ll want.
 
