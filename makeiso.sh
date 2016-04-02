@@ -89,7 +89,7 @@ uck-remaster-unpack-iso $DEFAULTPATH/$ISONAME $DEFAULTPATH/$DEFAULTISORIPPATH
 uck-remaster-unpack-rootfs $DEFAULTPATH/$DEFAULTISORIPPATH
 
 ###Unpack initrd
-uck-remaster-unpack-initrd $DEFAULTPATH/$DEFAULTISORIPPATH
+#uck-remaster-unpack-initrd $DEFAULTPATH/$DEFAULTISORIPPATH
 
 ###Prepare alternate
 uck-remaster-prepare-alternate $DEFAULTPATH/$DEFAULTISORIPPATH
@@ -109,7 +109,7 @@ uck-remaster-chroot-rootfs $DEFAULTPATH/$DEFAULTISORIPPATH $DEFAULTPATH/$DEFAULZ
 ###Clean squashfs (but keep the installed.txt for further update from the iso)
 rm -R $DEFAULTPATH/$DEFAULTISORIPPATH/remaster-root$DEFAULTPATH/$DEFAULZEOSGITPATH
 ###Repack initrd
-uck-remaster-pack-initrd $DEFAULTPATH/$DEFAULTISORIPPATH
+#uck-remaster-pack-initrd $DEFAULTPATH/$DEFAULTISORIPPATH
 ###Repack squashfs
 uck-remaster-pack-rootfs $DEFAULTPATH/$DEFAULTISORIPPATH
 ###Rebuil ISO
