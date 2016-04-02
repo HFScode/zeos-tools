@@ -18,6 +18,8 @@ This command allows two parameters :
 
 If you don’t specify any argument, the script will download and install all the patches, which is normally what you’ll want.
 
+## Building the ISO
+
 To build a fresh ISO with all the patches applied use :
 ```shell
 sudo bash -c "$(curl -s https://raw.githubusercontent.com/HFScode/zeos-tools/master/makeiso.sh)"
