@@ -17,6 +17,6 @@ echo "Checking for base installation"
 echo "Configuring zsnes"
 apt-get -y install zsnes
 echo "Configuring HFSBOX and other emulators"
-cd /usr/share/zpgks/zeos-tools/patches/deb/
+cd /usr/share/zpkgs/zeos-tools/patches/deb/
 dpkg-split --join hfsbox_1.0.1*
-dpkg -i /usr/share/zpgks/zeos-tools/patches/deb/hfsbox-1.0.1_1.0.1_all.deb
+dpkg -i /usr/share/zpkgs/zeos-tools/patches/deb/hfsbox-1.0.1_1.0.1_all.deb
