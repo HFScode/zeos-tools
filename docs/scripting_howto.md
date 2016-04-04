@@ -37,18 +37,21 @@ They are basically two ways to get control over the order of execution of the sc
 The first one is to use a package list file and to pass it as an argument of the install.sh script.
 You should create simple text file with the file name of the scripts to be run, on script per line in the order you want to execute them
 
-By doing so only the scripts that listed in the provided package list, will run and they will be run in the order they appear on the list. That can be useful to only install a series of packages for identifying side effects or for debug purpose.
-
-The second way to get control over execution order, is to use the zexecprior.sh script.
-This script will interupt the execution of the currently installed script and run the script passed as parameter.
-For example if you want script1.sh to be installed after script2.sh you just have to add the following line at the beginning of script1.sh. 
-
 ```shell
 script1.sh
 script2.sh
 script3.sh
 ```
 No comment or anyting else is allowed, only the scripts file names without the path.
+
+By doing so only the scripts that listed in the provided package list, will run and they will be run in the order they appear on the list. That can be useful to only install a series of packages for identifying side effects or for debug purpose.
+
+### using the zexecprior.sh script
+The second way to get control over execution order, is to use the zexecprior.sh script.
+This script will interupt the execution of the currently installed script and run the script passed as parameter.
+For example if you want script1.sh to be installed after script2.sh you just have to add the following line at the beginning of script1.sh. 
+
+
 By doing so the installation of script1.sh will be suspended, then script2.sh will be installed then the installation of script1.sh will be resumed.
 You can of course specifiy several scripts to be installed before the current one.
 
