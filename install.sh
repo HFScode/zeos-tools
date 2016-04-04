@@ -210,9 +210,9 @@ if [ $GITPULL == "true" ]; then
             exit 1
         fi
     else
-        echo "Git repo does not exists. Script will now clone it..."
+        echo "Git repo does not exists. Script will now clone the last revision..."
 	cd $DEFAULTPATH/
-        git clone https://github.com/HFScode/zeos-tools        
+        git clone --depth=1 https://github.com/HFScode/zeos-tools        
     fi
     echo "Git repo up to date"
     echo
