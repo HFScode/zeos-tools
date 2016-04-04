@@ -20,4 +20,4 @@ echo "==========================================================================
 cd /usr/games/hfsbox
 wget -nc https://github.com/HFScode/zspin/releases/download/v"$CURRENTVERSION"/zspin-"$CURRENTVERSION"-linux64.zip
 unzip zspin-"$CURRENTVERSION"-linux64.zip -d zspin/
-
+rm zspin-"$CURRENTVERSION"-linux64.zip
