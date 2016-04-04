@@ -51,6 +51,9 @@ The second way to get control over execution order, is to use the zexecprior.sh 
 This script will interupt the execution of the currently installed script and run the script passed as parameter.
 For example if you want script1.sh to be installed after script2.sh you just have to add the following line at the beginning of script1.sh. 
 
+```shell
+/usr/share/zpkgs/zeos-tools/zexecprior.sh script2.sh
+```
 
 By doing so the installation of script1.sh will be suspended, then script2.sh will be installed then the installation of script1.sh will be resumed.
 You can of course specifiy several scripts to be installed before the current one.
