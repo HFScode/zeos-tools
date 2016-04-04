@@ -97,7 +97,7 @@ uck-remaster-prepare-alternate $DEFAULTPATH/$DEFAULTISORIPPATH
 ###Copy repo files to squashf
 mkdir $DEFAULTPATH/$DEFAULTISORIPPATH/remaster-root$DEFAULTPATH/
 cd $DEFAULTPATH/$DEFAULTISORIPPATH/remaster-root$DEFAULTPATH/
-git clone https://github.com/HFScode/zeos-tools 
+git clone --depth=1 https://github.com/HFScode/zeos-tools 
 chmod +x -R $DEFAULTPATH/$DEFAULTISORIPPATH/remaster-root$DEFAULTPATH/ 
 echo "Your environment is ready"
 echo "You can manually copy some files to root file system before I chroot it"
